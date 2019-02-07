@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mongo:
+    build: 
+      context: .
+      dockerfile: docker/mongo/Dockerfile
+    environment:
+      - MONGODB_DATABASE=stocker-stage
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+  node:
+    build: 
+      context: .
+      dockerfile: docker/node/Dockerfile
+    ports:
+      - "7001:7001"
+    # volumes:
+    #   - ./index.js:/app/index.js
+    #   - ./config.js:/app/config.js
+    #   - ./middleware:/app/middleware
+    #   - ./package.json:/app/package.json
+    entrypoint: /entrypoint.sh -d mongo:27017 -c 'yarn start';
+    networks:
+      - backend
+networks:
+  backend:
+volumes:
+  mongodata: 

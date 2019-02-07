@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js --exec babel-node index.js --presets es2015,stage-2",
+    "start": "nodemon -L src/index.js --exec babel-node src/index.js --presets es2015,stage-2",
     "test": "echo \"Success: \" && exit 0"
   },
   "keywords": [],
@@ -13,8 +13,14 @@
   "dependencies": {
     "apollo-server": "^2.3.3",
     "apollo-server-express": "^2.3.3",
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
-    "graphql": "^14.1.1"
+    "graphql": "^14.1.1",
+    "mongoose": "^5.4.10",
+    "qs-middleware": "^1.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,2 +1,5 @@
 node_modules
 *-lock.json
+yarn-error.log
+yarn.lock
+docker/*/local.Dockerfile
