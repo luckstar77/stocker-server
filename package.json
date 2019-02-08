@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L src/index.js --exec babel-node src/index.js --presets es2015,stage-2",
+    "start": "nodemon -L src/index.js",
     "test": "echo \"Success: \" && exit 0"
   },
   "keywords": [],

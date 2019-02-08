@@ -11,6 +11,12 @@ const typeDefs = gql`
     stocks: [Stock]
   }
 
+  # Mutation 定義
+  type Mutation {
+    "新增股票"
+    addStock(id: ID!, name: String!): Stock
+  }
+
   type Stock {
     id: ID,
     name: String,
@@ -21,6 +27,25 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     stocks: () => models.stocks.find(),
+  },
+  // Mutation Type Resolver
+  Mutation : {
+    addStock: async (root, args, context) => {
+      const { id, name } = args;
+
+      // 新增 stock
+      const result = await new Promise((resolve, reject) => {
+        models.stocks.create({ id, name }, function (err, data) {
+          if (err) {
+            reject(err);
+            return;
+          };
+          resolve(data);
+        });
+      });
+
+      return result;
+    },
   },
 };
 
