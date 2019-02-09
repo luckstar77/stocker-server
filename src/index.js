@@ -14,7 +14,7 @@ const typeDefs = gql`
   # Mutation 定義
   type Mutation {
     "新增股票"
-    addStock(
+    upsertStock(
       "代號"
       symbol: String,
       "公司"
@@ -60,6 +60,7 @@ const typeDefs = gql`
       "(季)速動比率(%)"
       quickRatioOfLastSeason: Float,
     ): Stock
+    removeStock(symbol: String!): Stock
   }
 
   type Stock {
@@ -113,14 +114,30 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    stocks: () => models.stocks.find(),
+    stocks: () => models.stocks.find({ symbol: { $ne: null } }),
   },
   // Mutation Type Resolver
   Mutation : {
-    addStock: async (root, args, context) => {
+    upsertStock: async (root, args, context) => {
+      const { symbol } = args;
       // 新增 stock
       const result = await new Promise((resolve, reject) => {
-        models.stocks.create(args, function (err, data) {
+        models.stocks.updateOne({symbol}, args, {upsert: true}, function (err, data) {
+          if (err) {
+            reject(err);
+            return;
+          };
+          resolve(data);
+        });
+      });
+
+      return result;
+    },
+    removeStock: async(root, args, context) => {
+      const { symbol } = args;
+      // 新增 stock
+      const result = await new Promise((resolve, reject) => {
+        models.stocks.deleteOne(args, function (err, data) {
           if (err) {
             reject(err);
             return;
