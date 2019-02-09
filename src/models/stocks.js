@@ -5,8 +5,77 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ModelSchema = new Schema({
-    id: String,
-    name: String,
+    symbol: {
+        type: String,
+        required: true
+    },
+    company: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true,
+        min: [0, 'The price is need greater than 0.'],
+    },
+    dividend: {
+        type: Number,
+        min: [0, 'The dividend is need greater than or equal to 0.'],
+    },
+    epsOf4Seasons: {
+        type: Number,
+    },
+    epsOfLastYear: {
+        type: Number,
+    },
+    epsOf2YearsAgo: {
+        type: Number,
+    },
+    epsOf3YearsAgo: {
+        type: Number,
+    },
+    yoyOfLastMonth: {
+        type: Number,
+    },
+    yoyOf2MonthAgo: {
+        type: Number,
+    },
+    yoyOf3MonthAgo: {
+        type: Number,
+    },
+    accumulatedYoyOfLastMonth: {
+        type: Number,
+    },
+    opmOf4Seasons: {
+        type: Number,
+    },
+    opmOfLastYear: {
+        type: Number,
+    },
+    opmOf2YearsAgo: {
+        type: Number,
+    },
+    opmOf3YearsAgo: {
+        type: Number,
+    },
+    npmOf4Seasons: {
+        type: Number,
+    },
+    npmOfLastYear: {
+        type: Number,
+    },
+    npmOf2YearsAgo: {
+        type: Number,
+    },
+    npmOf3YearsAgo: {
+        type: Number,
+    },
+    casheOfLastSeason: {
+        type: Number,
+    },
+    quickRatioOfLastSeason: {
+        type: Number,
+    },
 });
 
 // Compile model from schema
