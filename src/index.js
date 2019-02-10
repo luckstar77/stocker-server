@@ -9,6 +9,7 @@ const models = require('./models');
 const typeDefs = gql`
   type Query {
     stocks: [Stock]
+    findByCD: [Stock]
   }
 
   # Mutation 定義
@@ -114,7 +115,17 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    stocks: () => models.stocks.find({ symbol: { $ne: null } }),
+    stocks: async () => await models.stocks.find({ symbol: { $ne: null } }),
+    findByCD: async () => {
+      let stocks = await models.stocks.find({ symbol: { $ne: null } });
+      
+      return stocks.filter(stock=>
+          stock.accumulatedYoyOfLastMonth > 0
+          && stock.epsOfLastYear > stock.epsOf2YearsAgo * 0.9
+          && stock.epsOfLastYear > stock.epsOf3YearsAgo * 0.9
+          ? true : false
+        ).sort((a,b)=>b.dividend - a.dividend)
+    },
   },
   // Mutation Type Resolver
   Mutation : {
