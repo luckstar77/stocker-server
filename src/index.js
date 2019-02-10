@@ -60,6 +60,12 @@ const typeDefs = gql`
       casheOfLastSeason: Float,
       "(季)速動比率(%)"
       quickRatioOfLastSeason: Float,
+      "填權息次數"
+      dividendCount: Int,
+      "填權息成功次數"
+      dividendSuccessCount: Int,
+      "填權息成功率"
+      dividendSuccessPercent : Float,
     ): Stock
     removeStock(symbol: String!): Stock
   }
@@ -109,6 +115,12 @@ const typeDefs = gql`
     casheOfLastSeason: Float,
     "(季)速動比率(%)"
     quickRatioOfLastSeason: Float,
+    "填權息次數"
+    dividendCount: Int,
+    "填權息成功次數"
+    dividendSuccessCount: Int,
+    "填權息成功率"
+    dividendSuccessPercent : Float,
   }
 `;
 

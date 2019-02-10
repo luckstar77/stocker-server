@@ -76,6 +76,14 @@ var ModelSchema = new Schema({
     quickRatioOfLastSeason: {
         type: Number,
     },
+    dividendCount: {
+        type: Number,
+        min: [0, 'The dividendCount is need greater than or equal to 0.'],
+    },
+    dividendSuccessCount: {
+        type: Number,
+        min: [0, 'The dividendSuccessCount is need greater than or equal to 0.'],
+    },
 });
 
 // Compile model from schema
