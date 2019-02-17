@@ -84,6 +84,10 @@ var ModelSchema = new Schema({
         type: Number,
         min: [0, 'The dividendSuccessCount is need greater than or equal to 0.'],
     },
+    dividendSuccessPercent: {
+        type: Number,
+        min: [0, 'The dividendSuccessPercent is need greater than or equal to 0.'],
+    },
 });
 
 // Compile model from schema

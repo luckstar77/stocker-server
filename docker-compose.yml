@@ -20,7 +20,7 @@ services:
       - "7001:7001"
     environment:
       - MONGO_HOST=mongo
-      - MONGO_DATABASE=stocker-stag
+      - MONGO_DATABASE=stocker-stage
       - PORT=7001
     # volumes:
     #   - ./index.js:/app/index.js
