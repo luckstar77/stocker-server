@@ -1,9 +1,10 @@
 //Import the mongoose module
 var mongoose = require('mongoose');
 var { mongo } = require('./config');
-
+console.log('@@@@@@@@@@@@@@@')
+console.log(mongo)
 //Set up default mongoose connection
-var mongoDB = `mongodb://${mongo.host}/${mongo.database}`;
+var mongoDB = mongo.uri;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
