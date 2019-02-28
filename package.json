@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L src/index.js",
+    "start": "node src/index.js",
+    "dev": "nodemon -L src/index.js",
     "test": "echo \"Success: \" && exit 0"
+  },
+  "engines": {
+    "node": "10.x"
   },
   "keywords": [],
   "author": "",
