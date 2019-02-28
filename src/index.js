@@ -174,7 +174,7 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers, introspection: true });
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true, playground: true });
 
 const app = connect();
 const path = '/graphql';
