@@ -4,6 +4,18 @@ var mongoose = require('mongoose');
 //Define a schema
 var Schema = mongoose.Schema;
 
+var DividendSchema = new Schema({ 
+    date: String ,
+    dividend: Number,
+    priceOfLastDay: Number,
+    openingPrice: Number,
+    yield: Number,
+    per: Number,
+    pbr: Number,
+    success: Boolean,
+    successDay: Number,
+});
+
 var ModelSchema = new Schema({
     symbol: {
         type: String,
@@ -88,6 +100,7 @@ var ModelSchema = new Schema({
         type: Number,
         min: [0, 'The dividendSuccessPercent is need greater than or equal to 0.'],
     },
+    dividends: [DividendSchema],
 });
 
 // Compile model from schema

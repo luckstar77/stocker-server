@@ -66,6 +66,8 @@ const typeDefs = gql`
       dividendSuccessCount: Int,
       "填權息成功率"
       dividendSuccessPercent : Float,
+      "填權息資料"
+      dividends: [DividendInput],
     ): Stock
     removeStock(symbol: String!): Stock
   }
@@ -121,6 +123,50 @@ const typeDefs = gql`
     dividendSuccessCount: Int,
     "填權息成功率"
     dividendSuccessPercent : Float,
+    "填權息資料"
+    dividends: [Dividend],
+  }
+
+  type Dividend {
+    "除權息日"
+    date : String,
+    "權息值"
+    dividend: Float,
+    "前一日收盤"
+    priceOfLastDay: Float,
+    "開盤參考價"
+    openingPrice: Float,
+    "殖利率"
+    yield: Float,
+    "本益比"
+    per: Float,
+    "股價淨值比"
+    pbr: Float,
+    "是否填權息"
+    success: Boolean,
+    "可填權息天數"
+    successDay: Int,
+  }
+
+  input DividendInput {
+    "除權息日"
+    date : String,
+    "權息值"
+    dividend: Float,
+    "前一日收盤"
+    priceOfLastDay: Float,
+    "開盤參考價"
+    openingPrice: Float,
+    "殖利率"
+    yield: Float,
+    "本益比"
+    per: Float,
+    "股價淨值比"
+    pbr: Float,
+    "是否填權息"
+    success: Boolean,
+    "可填權息天數"
+    successDay: Int,
   }
 `;
 
