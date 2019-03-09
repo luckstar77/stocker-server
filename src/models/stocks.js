@@ -34,6 +34,10 @@ var ModelSchema = new Schema({
         type: Number,
         min: [0, 'The dividend is need greater than or equal to 0.'],
     },
+    dividendAvg: {
+        type: Number,
+        min: [0, 'The dividend is need greater than or equal to 0.'],
+    },
     epsOf4Seasons: {
         type: Number,
     },

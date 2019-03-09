@@ -24,6 +24,8 @@ const typeDefs = gql`
       price: Float,
       "殖利率"
       dividend: Float,
+      "歷年平均殖利率"
+      dividendAvg: Float,
       "(4季)每股稅後淨利(EPS)(元)"
       epsOf4Seasons: Float,
       "(年)每股稅後淨利(EPS)(元)"
@@ -81,6 +83,8 @@ const typeDefs = gql`
     price: Float,
     "殖利率"
     dividend: Float,
+    "歷年平均殖利率"
+    dividendAvg: Float,
     "(4季)每股稅後淨利(EPS)(元)"
     epsOf4Seasons: Float,
     "(年)每股稅後淨利(EPS)(元)"
