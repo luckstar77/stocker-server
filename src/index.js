@@ -10,6 +10,7 @@ const typeDefs = gql`
   type Query {
     stocks: [Stock]
     findByCD: [Stock]
+    stock(search: String): [Stock]
   }
 
   # Mutation 定義
@@ -188,6 +189,7 @@ const resolvers = {
           ? true : false
         ).sort((a,b)=>b.dividend - a.dividend)
     },
+    stock: async (root, {search}, context) => await models.stocks.find({ $or: [{symbol: {$regex : new RegExp(search)}},{company: {$regex : new RegExp(search)}}] }),
   },
   // Mutation Type Resolver
   Mutation : {
@@ -224,8 +226,9 @@ const resolvers = {
   },
 };
 
-// const server = new ApolloServer({ typeDefs, resolvers, introspection: true, playground: true });
-const server = new ApolloServer({ typeDefs, resolvers });
+const options = {typeDefs, resolvers};
+if(process.env.NODE_ENV === 'DEVELOPMENT') options = {...options, introspection: true, playground: true};
+const server = new ApolloServer(options);
 
 const app = connect();
 const path = '/graphql';

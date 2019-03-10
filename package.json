@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon -L src/index.js",
+    "dev": "NODE_ENV=development nodemon -L src/index.js",
     "test": "echo \"Success: \" && exit 0"
   },
   "engines": {
