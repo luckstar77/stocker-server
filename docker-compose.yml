@@ -17,10 +17,10 @@ services:
       context: .
       dockerfile: docker/node/Dockerfile
     ports:
-      - "7001:7001"
+      - "7002:7002"
     environment:
       - MONGODB_URI=mongodb://mongo:27017/stocker-stage
-      - PORT=7001
+      - PORT=7002
     # volumes:
     #   - ./index.js:/app/index.js
     #   - ./config.js:/app/config.js

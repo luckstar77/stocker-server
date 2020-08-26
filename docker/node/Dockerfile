@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . /app/
 COPY ./docker/entrypoint.sh /
 
-EXPOSE 7001
+EXPOSE 7002
 
 RUN yarn install && yarn cache clean
 RUN [ "chmod", "+x", "/entrypoint.sh"]
